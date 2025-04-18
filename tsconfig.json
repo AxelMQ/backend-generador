@@ -7,6 +7,9 @@
     "strict": true,                       // Activa verificación estricta de tipos
     "esModuleInterop": true,              // Permite importar librerías CommonJS fácilmente
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true                  // Evita errores en archivos de definición de librerías
+    "skipLibCheck": true,                  // Evita errores en archivos de definición de librerías
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    // "strictPropertyInitialization": false,
   }
 }

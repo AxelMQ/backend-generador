@@ -71,8 +71,26 @@ PORT=3000
 
 ✅ Estructura inicial lista  
 ✅ Rutas y controladores básicos creados (mock)  
-🗃️ Conexión a base de datos (por definir) 
+✅ Conexión a base de datos PostgreSQL implementada con TypeORM  
+✅ Creación automática de tablas con `synchronize: true`  
 🧠 Implementación lógica de generación de código (por definir)
+
+---
+
+## 🛢️ Configuración de Base de Datos
+
+Este backend utiliza **PostgreSQL** como motor de base de datos y **TypeORM** como ORM.
+
+Para configurar la conexión, crear un archivo `.env` (basado en `.env.example`) con lo siguiente:
+
+```env
+PORT=3000
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=tu_contraseña
+DB_NAME=frontend_generator
+
 ---
 
 ## 👤 Autor
