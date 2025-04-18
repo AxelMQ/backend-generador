@@ -60,9 +60,8 @@ Rutas y controladores implementados (mock):
 ## 🌱 Variables de Entorno
 
 Crear un archivo `.env` en la raíz (no se sube al repo). Como guía, usar el `.env.example`:
-
-```env
-PORT=3000
+- env
+- PORT=3000
 
 
 ---
@@ -83,13 +82,13 @@ Este backend utiliza **PostgreSQL** como motor de base de datos y **TypeORM** co
 
 Para configurar la conexión, crear un archivo `.env` (basado en `.env.example`) con lo siguiente:
 
-```env
-PORT=3000
-DB_HOST=localhost
-DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=tu_contraseña
-DB_NAME=frontend_generator
+  - .env
+  PORT=3000
+  DB_HOST=localhost
+  DB_PORT=5432
+  DB_USERNAME=postgres
+  DB_PASSWORD=tu_contraseña
+  DB_NAME=frontend_generator
 
 ---
 
