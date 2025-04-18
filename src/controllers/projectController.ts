@@ -1,28 +1,73 @@
 import { Request, Response } from "express";
+import { AppDataSource } from '../config/data-source';
+import { Project } from '../models/Project';
 
-export const getProjects = (req: Request, res: Response) => {
-    res.json({ message: 'Lista de proyecto (mock)'});
+const projectRepo = AppDataSource.getRepository(Project);
+
+export const getProjects = async (req: Request, res: Response) => {
+    try {
+        const projects = await projectRepo.find();
+        return res.json(projects);
+    } catch (err) {
+        console.error('Error en getProjects:', err);
+        return res.status(500).json({ error: 'Error al listar proyectos.' });
+    }
 }
 
-export const createProject = (req: Request, res: Response) => {
-    const { name } = req.body;
-    res.status(201).json({ message: `Proyecto '${name}' creado (mock)` });
+export const createProject = async (req: Request, res: Response) => {
+    try {
+        if (!req.body.name) {
+            return res.status(400).json({ error: 'El nombre del proyecto es obligatorio.' });
+        }          
+        const project = projectRepo.create(req.body);
+        const result = await projectRepo.save(project);
+        return res.status(201).json(result);
+    } catch (err) {
+        console.error('Error en createProject:', err);
+        return res.status(400).json({ error: 'Error al crear Proyecto.'});
+    }
 }
 
-export const getProjectById = (req: Request, res: Response) => {
+export const getProjectById = async (req: Request, res: Response) => {
     const { id } = req.params;
-    res.json({ message: `Detalles del proyecto con Id ${id} (mock)`})
+    try {
+        const project = await projectRepo.findOneBy({ id: +id });
+        if (!project) return res.status(404).json({ error: 'Proyecto no encontrado.' });
+        return res.json(project);
+    } catch (err) {
+        console.error('Error en getProjectById:', err);
+        return res.status(500).json({ error: 'Error al obtener proyecto.' });
+    }
 }
 
-export const updateProject = (req: Request, res: Response) => {
+export const updateProject = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { name } = req.body;
-    res.json({ message: `Proyecto ${id} actualizado a '${name}' (mock)`});
+    try {
+        if (!req.body.name) {
+            return res.status(400).json({ error: 'El nombre del proyecto es obligatorio.' });
+        }          
+        await projectRepo.update(id, req.body);
+        const updated = await projectRepo.findOneBy({ id: +id });
+        if (!updated) return res.status(404).json({ error: 'Proyecto no encontrado.' });
+        return res.json(updated);
+    } catch (err) {
+        console.error('Error en updateProject:', err);
+        return res.status(400).json({ error: 'Error al actualizar proyecto.' });
+    }
 }
 
-export const deleteProject = (req: Request, res: Response) => {
+export const deleteProject = async (req: Request, res: Response) => {
     const { id } = req.params;
-    res.json({ message: `Proyecto ${id} eliminado (mock)`});
+    try {
+        const result = await projectRepo.delete(id);
+        if (result.affected === 0) {
+          return res.status(404).json({ error: 'Proyecto no encontrado.' });
+        }
+        return res.status(204).send();        
+    } catch (err) {
+        console.error('Error en deleteProject:', err);
+        return res.status(500).json({ error: 'Error al eliminar proyecto.' });
+    }
 }
 
 export const generateFrontend = (req: Request, res: Response) => {

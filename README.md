@@ -34,6 +34,8 @@ Este es un backend básico desarrollado en **Node.js + TypeScript** usando **Exp
 - `cors` → Para habilitar peticiones desde distintos orígenes.
 - `dotenv` → Carga variables desde el archivo `.env`.
 - `body-parser` → Procesa el cuerpo de las solicitudes HTTP.
+- `typeorm` → ORM para interactuar con la base de datos.
+- `pg` → Conector de PostgreSQL para Node.js.
 
 ### Desarrollo
 - `typescript` → Soporte de TypeScript.
@@ -57,22 +59,15 @@ Rutas y controladores implementados (mock):
 
 ---
 
-## 🌱 Variables de Entorno
-
-Crear un archivo `.env` en la raíz (no se sube al repo). Como guía, usar el `.env.example`:
-- env
-- PORT=3000
-
-
----
-
 ## 📌 Estado del Proyecto
 
 ✅ Estructura inicial lista  
 ✅ Rutas y controladores básicos creados (mock)  
 ✅ Conexión a base de datos PostgreSQL implementada con TypeORM  
-✅ Creación automática de tablas con `synchronize: true`  
+✅ Creación automática de tablas con `synchronize: true` 
+✅ CRUD de proyectos implementado 
 🧠 Implementación lógica de generación de código (por definir)
+🚧 Futuras mejoras en la generación de código real
 
 ---
 
@@ -80,9 +75,12 @@ Crear un archivo `.env` en la raíz (no se sube al repo). Como guía, usar el `.
 
 Este backend utiliza **PostgreSQL** como motor de base de datos y **TypeORM** como ORM.
 
+## 🌱 Variables de Entorno
+
 Para configurar la conexión, crear un archivo `.env` (basado en `.env.example`) con lo siguiente:
 
   - .env
+  
   PORT=3000
   DB_HOST=localhost
   DB_PORT=5432
