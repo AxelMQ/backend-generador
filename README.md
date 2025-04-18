@@ -66,6 +66,7 @@ Rutas y controladores implementados (mock):
 ✅ Conexión a base de datos PostgreSQL implementada con TypeORM  
 ✅ Creación automática de tablas con `synchronize: true` 
 ✅ CRUD de proyectos implementado 
+✅ Generador de codico (Basico) 
 🧠 Implementación lógica de generación de código (por definir)
 🚧 Futuras mejoras en la generación de código real
 
@@ -80,7 +81,7 @@ Este backend utiliza **PostgreSQL** como motor de base de datos y **TypeORM** co
 Para configurar la conexión, crear un archivo `.env` (basado en `.env.example`) con lo siguiente:
 
   - .env
-  
+
   PORT=3000
   DB_HOST=localhost
   DB_PORT=5432

@@ -71,11 +71,64 @@ export const deleteProject = async (req: Request, res: Response) => {
 }
 
 export const generateFrontend = (req: Request, res: Response) => {
-    const { designData } = req.body;
-    res.json({
-        message: 'Codigo generado (mock)',
-        html: '<div>Ejemplo</div>',
-        css: 'div { color: red; }',
-        angularComponent: '@Component({...})'
+    const { components } = req.body;
+
+    if (!Array.isArray(components)) {
+        return res.status(400).json({ error: 'El formato de diseño es inválido.' });
+    }
+
+    let html = '';
+    let css = '';
+    let angularTemplate = '';
+
+    components.forEach((component, index) => {
+        const className = `component-${index}`;
+        const styleEntries = Object.entries(component.styles || {});
+        const styleCSS = styleEntries.map(([key, value]) => {
+            const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+            return `  ${cssKey}: ${value};`;
+        }).join('\n');
+
+        css += `.${className} {\n${styleCSS}\n}\n\n`;
+
+        switch (component.type) {
+            case 'button':
+                html += `<button class="${className}">${component.text || 'Botón'}</button>\n`;
+                angularTemplate += `<button class="${className}">${component.text || 'Botón'}</button>\n`;
+                break;
+            case 'input':
+                html += `<input class="${className}" placeholder="${component.placeholder || ''}" />\n`;
+                angularTemplate += `<input class="${className}" placeholder="${component.placeholder || ''}" />\n`;
+                break;
+            case 'header':
+                html += `<h1 class="${className}">${component.text || 'Título'}</h1>\n`;
+                angularTemplate += `<h1 class="${className}">${component.text || 'Título'}</h1>\n`;
+                break;
+            default:
+                html += `<!-- Componente desconocido: ${component.type} -->\n`;
+                angularTemplate += `<!-- Componente desconocido: ${component.type} -->\n`;
+                break;
+        }
     });
-}
+
+    const angularComponent = `
+    import { Component } from '@angular/core';
+
+    @Component({
+    selector: 'app-generated',
+    template: \`
+    ${angularTemplate.trim()}
+    \`,
+    styles: [\`
+    ${css.trim()}
+    \`]
+    })
+    export class GeneratedComponent {}
+    `;
+
+    return res.json({
+        html: html.trim(),
+        css: css.trim(),
+        angularComponent: angularComponent.trim()
+    });
+};
