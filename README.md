@@ -5,7 +5,15 @@ Este es un backend básico desarrollado en **Node.js + TypeScript** usando **Exp
 ---
 
 ## 📁 Estructura del Proyecto
-backend-generador/ ├── src/ │ ├── app.ts # Punto de entrada principal del servidor │ ├── controllers/ # Lógica de negocio (en desarrollo) │ └── routes/ # Definición de rutas (en desarrollo) ├── .env.example # Variables de entorno de ejemplo ├── .gitignore # Archivos y carpetas ignoradas por git ├── package.json # Configuración de dependencias y scripts ├── tsconfig.json # Configuración de TypeScript └── README.md # Este archivo 😄
+- backend-generador/ 
+- ├── src/ │ 
+- ├── app.ts # Punto de entrada principal del servidor 
+- │ ├── controllers/ # Lógica de negocio (en desarrollo) 
+- │ └── routes/ # Definición de rutas (en desarrollo) 
+- ├── .env.example # Variables de entorno de ejemplo 
+- ├── .gitignore # Archivos y carpetas ignoradas por git 
+- ├── package.json # Configuración de dependencias y scripts 
+- ├── tsconfig.json # Configuración de TypeScript └── README.md # Este archivo 😄
 
 
 ---
@@ -37,7 +45,7 @@ backend-generador/ ├── src/ │ ├── app.ts # Punto de entrada princi
 ## 🌱 Variables de Entorno
 
 Crear un archivo `.env` en la raíz (no se sube al repo). Como guía, usar el `.env.example`:
-PORT=3000
+- PORT=3000
 
 
 ---
