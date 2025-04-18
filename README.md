@@ -4,17 +4,18 @@ Este es un backend básico desarrollado en **Node.js + TypeScript** usando **Exp
 
 ---
 
-## 📁 Estructura del Proyecto
-- backend-generador/ 
-- ├── src/ │ 
-- ├── app.ts # Punto de entrada principal del servidor 
-- │ ├── controllers/ # Lógica de negocio (en desarrollo) 
-- │ └── routes/ # Definición de rutas (en desarrollo) 
-- ├── .env.example # Variables de entorno de ejemplo 
-- ├── .gitignore # Archivos y carpetas ignoradas por git 
-- ├── package.json # Configuración de dependencias y scripts 
-- ├── tsconfig.json # Configuración de TypeScript └── README.md # Este archivo 😄
 
+## 📁 Estructura del Proyecto
+- backend-generador/  
+  ├── src/  
+  │   ├── app.ts               # Punto de entrada principal del servidor  
+  │   ├── controllers/         # Lógica de negocio  
+  │   └── routes/              # Definición de rutas  
+  ├── .env.example             # Variables de entorno de ejemplo  
+  ├── .gitignore               # Archivos y carpetas ignoradas por git  
+  ├── package.json             # Configuración de dependencias y scripts  
+  ├── tsconfig.json            # Configuración de TypeScript  
+  └── README.md                # Este archivo 😄
 
 ---
 
@@ -42,10 +43,26 @@ Este es un backend básico desarrollado en **Node.js + TypeScript** usando **Exp
 
 ---
 
+
+## 🔌 Endpoints definidos
+
+Rutas y controladores implementados (mock):
+
+- `GET /api/projects` → Lista proyectos
+- `POST /api/projects` → Crea proyecto
+- `GET /api/projects/:id` → Obtiene detalles de un proyecto
+- `PUT /api/projects/:id` → Actualiza un proyecto
+- `DELETE /api/projects/:id` → Elimina un proyecto
+- `POST /api/generate` → Simula generación de frontend desde un diseño
+
+---
+
 ## 🌱 Variables de Entorno
 
 Crear un archivo `.env` en la raíz (no se sube al repo). Como guía, usar el `.env.example`:
-- PORT=3000
+
+```env
+PORT=3000
 
 
 ---
@@ -53,9 +70,9 @@ Crear un archivo `.env` en la raíz (no se sube al repo). Como guía, usar el `.
 ## 📌 Estado del Proyecto
 
 ✅ Estructura inicial lista  
-🛠️ Próximamente: definición de rutas y controladores  
-🗃️ Conexión a base de datos (por definir)
-
+✅ Rutas y controladores básicos creados (mock)  
+🗃️ Conexión a base de datos (por definir) 
+🧠 Implementación lógica de generación de código (por definir)
 ---
 
 ## 👤 Autor
