@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                       // Código JS moderno
+    "module": "commonjs",                 // Para Node.js
+    "rootDir": "src",                     // Carpeta donde está tu código fuente
+    "outDir": "dist",                     // Carpeta donde se compilará el JS
+    "strict": true,                       // Activa verificación estricta de tipos
+    "esModuleInterop": true,              // Permite importar librerías CommonJS fácilmente
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true                  // Evita errores en archivos de definición de librerías
+  }
+}
